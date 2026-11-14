@@ -1,0 +1,241 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "title": "FacebookPostExport",
+    "description": "Schema for extracted Facebook posts, comments, threaded replies, reactions, and share counts.",
+    "type": "object",
+    "properties": {
+        "post_id": {
+            "type": "string",
+            "description": "Unique identifier for the Facebook post (e.g., '123456789_987654321' in pageId_postId form)."
+        },
+        "permalink_url": {
+            "type": "string",
+            "format": "uri",
+            "description": "Direct URL to the post."
+        },
+        "author": {
+            "ref": "#/defs/Author",
+            "description": "The profile or page that published the post."
+        },
+        "source": {
+            "type": "object",
+            "description": "Where the post was published (replaces 'subreddit').",
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "enum": [
+                        "page",
+                        "group",
+                        "profile",
+                        "event"
+                    ],
+                    "description": "The kind of Facebook surface the post appeared on."
+                },
+                "id": {
+                    "type": "string",
+                    "description": "Identifier of the page, group, profile, or event."
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Display name of the page, group, profile, or event."
+                }
+            },
+            "required": [
+                "type",
+                "name"
+            ]
+        },
+        "message": {
+            "type": "string",
+            "description": "The text content of the post. May be empty for media-only posts."
+        },
+        "attachments": {
+            "type": "array",
+            "description": "Media or links attached to the post.",
+            "items": {
+                "ref": "#/defs/Attachment"
+            }
+        },
+        "reactions": {
+            "ref": "#/defs/Reactions",
+            "description": "Reaction counts on the post (replaces 'upvote_count')."
+        },
+        "share_count": {
+            "type": "integer",
+            "minimum": 0,
+            "description": "Number of times the post was shared."
+        },
+        "comment_count": {
+            "type": "integer",
+            "minimum": 0,
+            "description": "Total comment count as shown by Facebook (may exceed the number of comments scraped)."
+        },
+        "created_time": {
+            "type": "string",
+            "format": "date-time",
+            "description": "ISO 8601 timestamp of when the post was created."
+        },
+        "comments": {
+            "type": "array",
+            "description": "List of top-level comments on the post.",
+            "items": {
+                "ref": "#/defs/Comment"
+            }
+        }
+    },
+    "required": [
+        "post_id",
+        "author",
+        "source",
+        "reactions",
+        "comments"
+    ],
+    "$defs": {
+        "Author": {
+            "type": "object",
+            "description": "A Facebook user or page.",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "Identifier of the user or page, if available."
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Display name of the user or page."
+                },
+                "profile_url": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "URL to the user's profile or page."
+                }
+            },
+            "required": [
+                "name"
+            ]
+        },
+        "Reactions": {
+            "type": "object",
+            "description": "Breakdown of Facebook reactions.",
+            "properties": {
+                "total": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "description": "Total number of reactions."
+                },
+                "like": {
+                    "type": "integer",
+                    "minimum": 0
+                },
+                "love": {
+                    "type": "integer",
+                    "minimum": 0
+                },
+                "care": {
+                    "type": "integer",
+                    "minimum": 0
+                },
+                "haha": {
+                    "type": "integer",
+                    "minimum": 0
+                },
+                "wow": {
+                    "type": "integer",
+                    "minimum": 0
+                },
+                "sad": {
+                    "type": "integer",
+                    "minimum": 0
+                },
+                "angry": {
+                    "type": "integer",
+                    "minimum": 0
+                }
+            },
+            "required": [
+                "total"
+            ]
+        },
+        "Attachment": {
+            "type": "object",
+            "description": "A photo, video, link, or other media attached to a post or comment.",
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "enum": [
+                        "photo",
+                        "video",
+                        "link",
+                        "album",
+                        "sticker",
+                        "gif",
+                        "other"
+                    ],
+                    "description": "The kind of attachment."
+                },
+                "url": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "URL of the media or linked page."
+                },
+                "title": {
+                    "type": "string",
+                    "description": "Title or caption of the attachment, if present."
+                }
+            },
+            "required": [
+                "type"
+            ]
+        },
+        "Comment": {
+            "type": "object",
+            "description": "Represents a single comment, supporting threaded replies.",
+            "properties": {
+                "comment_id": {
+                    "type": "string",
+                    "description": "Unique identifier for the comment (e.g., '987654321_1122334455')."
+                },
+                "author": {
+                    "ref": "#/defs/Author",
+                    "description": "The user or page that wrote the comment."
+                },
+                "message": {
+                    "type": "string",
+                    "description": "The text content of the comment. May be empty for sticker- or image-only comments."
+                },
+                "attachments": {
+                    "type": "array",
+                    "description": "Media attached to the comment.",
+                    "items": {
+                        "ref": "#/defs/Attachment"
+                    }
+                },
+                "reaction_count": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "description": "Total number of reactions on the comment, as shown under the comment."
+                },
+                "reactions": {
+                    "ref": "#/defs/Reactions",
+                    "description": "Optional breakdown of reactions by type, if the scraper opens the reactions dialog."
+                },
+                "created_time": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "ISO 8601 timestamp of when the comment was created."
+                },
+                "replies": {
+                    "type": "array",
+                    "description": "Replies to this comment. Facebook displays one level of nesting; replies-to-replies usually appear here with an @mention.",
+                    "items": {
+                        "ref": "#/defs/Comment"
+                    }
+                }
+            },
+            "required": [
+                "comment_id",
+                "author",
+                "reaction_count"
+            ]
+        }
+    }
+}

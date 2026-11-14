@@ -1,0 +1,26 @@
+# ── Core / shared ──────────────────────────────────────────────────────────────
+pydantic>=2.7,<3
+
+# ── Track 2: Spatial Engine (local CPU dev + Modal GPU) ───────────────────────
+sentence-transformers>=3.0,<4
+umap-learn>=0.5,<1
+hdbscan>=0.8,<1
+bertopic>=0.16,<1
+numpy>=1.26,<3
+scikit-learn>=1.4,<2
+
+# ── Track 2: Visualization (local dev only) ───────────────────────────────────
+plotly>=5.22,<6
+
+# ── Track 3: Authenticity Engine ─────────────────────────────────────────────
+# scikit-learn already above
+
+# ── Track 4: Decoder ─────────────────────────────────────────────────────────
+openai>=1.30,<2
+
+# ── Track 5: Orchestration ───────────────────────────────────────────────────
+fastapi>=0.111,<1
+uvicorn[standard]>=0.29,<1
+
+# ── Modal (Track 2 GPU deployment) ───────────────────────────────────────────
+modal>=0.64,<1
