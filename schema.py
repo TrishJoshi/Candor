@@ -71,6 +71,7 @@ class Comment(BaseModel):
     text: str
     cluster_id: Optional[int] = None    # populated by Track 2
     account_authenticity_score: Optional[float] = None  # populated by Track 3
+    vector: Optional[List[float]] = None # populated by Track 2 for visualization
 
 
 class NarrativeCluster(BaseModel):
@@ -78,3 +79,6 @@ class NarrativeCluster(BaseModel):
     label: Optional[str] = None         # populated by Track 4
     cluster_score: Optional[float] = None  # populated by Track 3
     comments: List[Comment]
+
+# Type alias for centroids returned by Track 2 and used by Track 3
+CentroidsDict = dict[int, list[float]]
