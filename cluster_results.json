@@ -1,0 +1,94 @@
+{
+  "comments": [
+    {
+      "comment_id": "1613414513219797",
+      "author": "Ike Sonoy",
+      "text": "The US embassy already has pictures and videos and AI will sort them out for identification.",
+      "reaction_count": 16,
+      "timestamp": 1794536340.0,
+      "cluster_id": 0
+    },
+    {
+      "comment_id": "1879686743386495",
+      "author": "Emm Gumar Ang",
+      "text": "I support the Philippines' participation in Pax Silica. This could be a major opportunity to accelerate our semiconductor industry and attract high-value foreign investments.\n\nHowever, attracting billions in investments should not be our only measure of success.\n\nA single semiconductor fabrication plant can stimulate an entire industrial ecosystem—from chemical manufacturers, silica and silicon processors, industrial gas suppliers and water treatment companies to engineering contractors, logistics providers and Filipino SMEs.\n\nThe real question is: How much economic value will remain in the Philippines?\n\nI believe the government should secure clear commitments on local supplier development, technology transfer, Filipino workforce development, energy competitiveness, water sustainability, environmental protection, fiscal transparency and SME participation.\n\nSupport the investment, but negotiate the economic benefits.\n\nWe should use Pax Silica not merely to host foreign factories, but to develop our own industrial capabilities.\n\nForeign investment is welcome. Philippine economic development must be part of the deal.\n\n#PaxSilica #PhilippineIndustrialization #SemiconductorIndustry #EconomicDevelopment",
+      "reaction_count": 9,
+      "timestamp": 1794561540.0,
+      "cluster_id": 1
+    },
+    {
+      "comment_id": "1112550101650856",
+      "author": "Markus Nalus",
+      "text": "Yes to Pax Silica\n\nI went to La Salle",
+      "reaction_count": 13,
+      "timestamp": 1794557940.0,
+      "cluster_id": 1
+    },
+    {
+      "comment_id": "990157104163421",
+      "author": "Carlito Salaria",
+      "text": "They have a right to express their freedom of expression or speech based in our constitution.\n\nArticle lll\n\nSection 4\n\nBill of rights",
+      "reaction_count": 2,
+      "timestamp": 1794529620.0,
+      "cluster_id": 0
+    },
+    {
+      "comment_id": "1688275972952647",
+      "author": "Frank Lucas",
+      "text": "When I saw the hammer and sickle, what da hell??",
+      "reaction_count": 2,
+      "timestamp": 1794543540.0,
+      "cluster_id": 1
+    },
+    {
+      "comment_id": "3415252808654376",
+      "author": "Luis Lopez",
+      "text": "YES to PAX SILICA !",
+      "reaction_count": 22,
+      "timestamp": 1794536340.0,
+      "cluster_id": 1
+    },
+    {
+      "comment_id": "1093441823521627",
+      "author": "Panny S.Quintana",
+      "text": "Demonstrator rallyist\n\nare all applying for US TOURIST VISA",
+      "reaction_count": 7,
+      "timestamp": 1794539940.0,
+      "cluster_id": 0
+    },
+    {
+      "comment_id": "4649853908618017",
+      "author": "Michael Marquez",
+      "text": "#NoToPaxSilica",
+      "reaction_count": 8,
+      "timestamp": 1794539940.0,
+      "cluster_id": 1
+    },
+    {
+      "comment_id": "1822920662262826",
+      "author": "Judith Salvacion",
+      "text": "GO ANIMO La Salle",
+      "reaction_count": 4,
+      "timestamp": 1794525540.0,
+      "cluster_id": 1
+    }
+  ],
+  "centroids": {
+    "0": [
+      5.935060024261475,
+      3.8013134002685547,
+      2.0082719326019287,
+      -1.6317967176437378,
+      4.1099066734313965
+    ],
+    "1": [
+      5.206538677215576,
+      4.571191310882568,
+      1.9562950134277344,
+      -2.0597355365753174,
+      4.195131301879883
+    ]
+  },
+  "silhouette_score": 0.31011641025543213,
+  "n_clusters": 2
+}

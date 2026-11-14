@@ -144,6 +144,7 @@ def reduce_umap(embeddings: np.ndarray, n_components: int, label: str = "") -> n
         min_dist=0.0,
         metric="cosine",
         random_state=42,
+        compatibility_layout=True,  # pin legacy behavior, silence FutureWarning
     )
     reduced = reducer.fit_transform(embeddings)
     print(f"[umap{label}] Done — shape {reduced.shape}")
@@ -294,7 +295,7 @@ def build_plot(
         font=dict(family="Inter, Arial, sans-serif"),
     )
 
-    fig.write_html(str(output_path), include_plotlyjs="cdn")
+    fig.write_html(str(output_path), include_plotlyjs=True)  # fully self-contained, no internet needed
     print(f"[plot] Saved → {output_path.resolve()}")
 
 
